@@ -9,6 +9,7 @@
       </div>
       <div class="mb-10">
         <h2 class="text-left blue-grey--text text--darken-1">Keagan's Quips</h2>
+        <img src="@/assets/images/keeg.jpg"/>
         <div class="d-flex flex-wrap my-5">
           <SoundCard
           v-for="(item, index) in keaganSounds"
