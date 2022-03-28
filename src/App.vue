@@ -2,13 +2,19 @@
   <div id="app">
     <v-app>
       <div class="ma-10">
+    
+    <v-container fluid>
 
     <v-card class="interior pb-10" color="rgb(30, 42, 54)">
       <div>
-        <h1 class="blue-grey--text text--darken-1 mb-5">ELDEN RING HOUR SOUND BOARD</h1>
+        <h1 class="blue-grey--text text--darken-1">ELDEN RING BOYS</h1>
+        <p class="blue-grey--text text--darken-1">A soundboard dedicated to my fave elden boys.</p>
       </div>
+
+      <hr class="blue-grey mb-5">
+      
       <div class="mb-10">
-        <h2 class="text-left blue-grey--text text--darken-1">Keagan's Quips</h2>
+        <h2 class="text-left blue-grey--text text--darken-1 mb-5">Keagan's Quips</h2>
         <img src="@/assets/images/keeg.jpg"/>
         <div class="d-flex flex-wrap my-5">
           <SoundCard
@@ -16,6 +22,8 @@
           :key="index+item.soundClip"
           :displayText="item.displayText"
           :soundClip="item.soundClip"
+          :audio="item.audio"
+          :isNew="item.new"
           class="ma-1 text-center"
           />
         </div>
@@ -47,6 +55,7 @@
         </div>
       </div>
     </v-card>
+  </v-container>
       </div>
     </v-app>
   </div>
@@ -97,5 +106,15 @@ v-app {
 
 h1, h2, h3 {
   margin: 0px;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+img {
+   width: 100%;
+  height: auto;
+  max-width: 700px;
 }
 </style>

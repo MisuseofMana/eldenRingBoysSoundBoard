@@ -1,7 +1,7 @@
 export default [
     {
         displayText: `Fort nite.`,
-        soundClip: 'jakeFortnite'
+        soundClip: 'jakeFortnites'
     },
     {
         displayText: `Get outta me swamp.`,

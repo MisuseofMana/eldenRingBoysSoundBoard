@@ -1,14 +1,14 @@
 export default [
     {
         displayText: `This guy's gonna boof me. (oh shit) [DIES]`,
-        soundClip: 'boofMe'
+        soundClip: 'boofMe',
     },
     {
         displayText: `Butthole.`,
         soundClip: 'butthole'
     },
     {
-        displayText: `Which is a euphamism for a butthole, finally. (ok)`,
+        displayText: `Which is a euphamism for a butthole by the way. (ok)`,
         soundClip: 'buttholeEuphamism'
     },
     {
@@ -106,5 +106,20 @@ export default [
     {
         displayText: `You've been a baad boy (heh)`,
         soundClip: 'youveBeenABadBoy'
+    },
+    {
+        displayText: `Ya never know when you're gonna need a... a Keagan quote.`,
+        soundClip: 'keaganQuote',
+        new: true,
+    },
+    {
+        displayText: `That's what she said.`,
+        soundClip: 'thatsWhatSheSaid',
+        new: true,
+    },
+    {
+        displayText: `Ohhh. Ah, you dirty dog. (heh)`,
+        soundClip: 'dirtyDog',
+        new: true,
     },
 ]

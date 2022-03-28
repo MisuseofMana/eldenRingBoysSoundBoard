@@ -1,20 +1,18 @@
 <template>
-    <v-card height="100px" width="300px" class="d-flex justify-center align-center" :color="iconColor({r: 197, g:202, b:233})" raised @click="playSound(soundClip)">
-       <h3>
+    <v-card width="200px" class="d-flex justify-center align-center" :color="iconColor({r: 197, g:202, b:233})" raised @click="playSound()">
+       <h3 class="pa-5">
+           <span v-if="isNew">
+               &#9733;
+           </span>
            {{ displayText }}
         </h3>
     </v-card>
 </template>
 
 <script>
-import sounds from '@/plugins/sounds.js'
+import {Howl} from 'howler'
 
     export default {
-        data() {
-            return {
-                sounds: sounds
-            }
-        },
         props: {
             soundClip: {
                 type: String,
@@ -23,22 +21,27 @@ import sounds from '@/plugins/sounds.js'
             displayText: {
                 type: String,
                 default: '',
+            },
+            isNew: {
+                type: Boolean,
+                default: false,
             }
         },
         methods: {
-            playSound(clip) {
-                this.sounds[clip].play()
+            playSound() {
+                let clip = new Howl({
+                    src: [require(`@/assets/audio/${this.soundClip}.mp3`)]
+                })
+                clip.play()
+
             },
              iconColor(color) {
-                let r = color.r
-                let g = color.g
+                 if(this.isNew) return `rgb(255, 205, 89)`
                 let b = color.b
 
-                r = Math.floor(Math.random() * ((r + 10) - (r - 10) + 1) + (r - 10))
-                g = Math.floor(Math.random() * ((g + 10) - (g - 10) + 1) + (g - 10))
-                b = Math.floor(Math.random() * ((b + 10) - (b - 10) + 1) + (b - 10))
+                b = Math.floor(Math.random() * ((b + 20) - (b - 20) + 1) + (b - 20))
 
-                return `rgb(${r}, ${g}, ${b})`
+                return `rgb(${color.r}, ${color.g}, ${b})`
             }
         },
     }
