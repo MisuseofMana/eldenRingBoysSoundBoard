@@ -1,68 +1,32 @@
 <template>
   <div id="app">
     <v-app>
-      <div class="ma-10">
+
     
     <v-container fluid>
 
     <v-card class="interior pb-10" color="rgb(30, 42, 54)">
       <div>
-        <h1 class="blue-grey--text text--darken-1">ELDEN RING BOYS</h1>
+        <h1 class="blue-grey--text text--darken-1">ELDEN BOYS SOUNDBOARD</h1>
         <p class="blue-grey--text text--darken-1">A soundboard dedicated to my fave elden boys.</p>
       </div>
 
       <hr class="blue-grey mb-5">
       
-      <div class="mb-10">
-        <h2 class="text-left blue-grey--text text--darken-1 mb-5">Keagan's Quips</h2>
-        <img src="@/assets/images/keeg.jpg"/>
-        <div class="d-flex flex-wrap my-5">
-          <SoundCard
-          v-for="(item, index) in keaganSounds"
-          :key="index+item.soundClip"
-          :displayText="item.displayText"
-          :soundClip="item.soundClip"
-          :audio="item.audio"
-          :isNew="item.new"
-          class="ma-1 text-center"
-          />
-        </div>
-      </div>
+      <SoundBoard title="Keagan's Quips" image="keeg" :boardItems="keaganSounds"/>
+      <SoundBoard title="Jakes's Japes" image="jake" :boardItems="jakeSounds"/>
+      <SoundBoard title="Mauger's Remarks" image="maug" :boardItems="maugerSounds"/>
+      <SoundBoard title="David's Dirges" image="davy" :boardItems="null"/>
 
-      <div class="mb-10">
-        <h2 class="text-left blue-grey--text text--darken-1">Jake's Quips</h2>
-        <div class="d-flex flex-wrap my-5">
-          <SoundCard
-          v-for="(item, index) in jakeSounds"
-          :key="index+item.soundClip"
-          :displayText="item.displayText"
-          :soundClip="item.soundClip"
-          class="ma-1 text-center"
-          />
-        </div>
-      </div>
-      
-      <div class="mb-10">
-        <h2 class="text-left blue-grey--text text--darken-1">Mauger's Quips</h2>
-        <div class="d-flex flex-wrap my-5">
-          <SoundCard
-          v-for="(item, index) in maugerSounds"
-          :key="index+item.soundClip"
-          :displayText="item.displayText"
-          :soundClip="item.soundClip"
-          class="ma-1 text-center"
-          />
-        </div>
-      </div>
     </v-card>
   </v-container>
-      </div>
+
     </v-app>
   </div>
 </template>
 
 <script>
-import SoundCard from '@/components/SoundCard'
+import SoundBoard from '@/components/SoundBoard'
 import keaganSounds from '@/soundCards/keaganCards'
 import jakeSounds from '@/soundCards/jakeCards'
 import maugerSounds from '@/soundCards/maugerCards'
@@ -70,24 +34,24 @@ import maugerSounds from '@/soundCards/maugerCards'
 export default {
   name: 'App',
   components: {
-    SoundCard,
+    SoundBoard
   },
   data(){
     return {
-      keaganSounds: keaganSounds,
-      jakeSounds: jakeSounds,
-      maugerSounds: maugerSounds,
+      keaganSounds,
+      jakeSounds,
+      maugerSounds,
     }
   }
 }
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 #app {
     background-color: rgb(44, 62, 80);
-    font-family: 'Bebas Neue', cursive;
+    font-family: 'Lato', sans-serif;
 }
 
 v-app {
@@ -101,7 +65,7 @@ v-app {
 }
 
 .interior {
-  padding:100px 100px 0 100px;
+  padding:1rem 1rem 0 1rem;
 }
 
 h1, h2, h3 {
@@ -109,12 +73,7 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
-img {
-   width: 100%;
-  height: auto;
-  max-width: 700px;
-}
 </style>

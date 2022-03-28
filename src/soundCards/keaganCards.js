@@ -76,7 +76,7 @@ export default [
         soundClip: 'scat'
     },
     {
-        displayText: `shadowbait deez balls (magic sound)`,
+        displayText: `Shadowbait deez balls (magic sound)`,
         soundClip: 'shadowbait'
     },
     {
@@ -118,7 +118,7 @@ export default [
         new: true,
     },
     {
-        displayText: `Ohhh. Ah, you dirty dog. (heh)`,
+        displayText: `Ohhh wah, you dirty daaawg. (heh)`,
         soundClip: 'dirtyDog',
         new: true,
     },

@@ -1,5 +1,5 @@
 <template>
-    <v-card width="200px" class="d-flex justify-center align-center" :color="iconColor({r: 197, g:202, b:233})" raised @click="playSound()">
+    <v-card min-height="120px" class="d-flex justify-center align-center" :color="iconColor({r: 197, g:202, b:233})" raised @click="playSound()">
        <h3 class="pa-5">
            <span v-if="isNew">
                &#9733;
@@ -39,7 +39,7 @@ import {Howl} from 'howler'
                  if(this.isNew) return `rgb(255, 205, 89)`
                 let b = color.b
 
-                b = Math.floor(Math.random() * ((b + 20) - (b - 20) + 1) + (b - 20))
+                b = Math.floor(Math.random() * ((b + 30) - (b - 30) + 1) + (b - 30))
 
                 return `rgb(${color.r}, ${color.g}, ${b})`
             }
