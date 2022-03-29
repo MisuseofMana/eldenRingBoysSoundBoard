@@ -1,15 +1,7 @@
 export default [
     {
-        displayText: `This guy's gonna boof me. (oh shit) [DIES]`,
-        soundClip: 'boofMe',
-    },
-    {
         displayText: `Butthole.`,
         soundClip: 'butthole'
-    },
-    {
-        displayText: `Which is a euphamism for a butthole by the way. (ok)`,
-        soundClip: 'buttholeEuphamism'
     },
     {
         displayText: `Don't be mean to me!`,
@@ -48,12 +40,20 @@ export default [
         soundClip: 'imInASwamp'
     },
     {
+        displayText: `JAKEY BOYYY!`,
+        soundClip: 'jakeyBoy'
+    },
+    {
+        displayText: `This guy's gonna boof me. (oh shit) [DIES]`,
+        soundClip: 'boofMe',
+    },
+    {
         displayText: `Though, I will say this... um.`,
         soundClip: 'iWillSayThisSmack'
     },
     {
-        displayText: `JAKEY BOYYY!`,
-        soundClip: 'jakeyBoy'
+        displayText: `Which is a euphamism for a butthole by the way. (ok)`,
+        soundClip: 'buttholeEuphamism'
     },
     {
         displayText: `Lil bItCh.`,

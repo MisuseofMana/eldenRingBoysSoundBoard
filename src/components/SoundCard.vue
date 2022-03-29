@@ -1,5 +1,5 @@
 <template>
-    <v-card min-height="120px" class="d-flex justify-center align-center" :color="iconColor({r: 197, g:202, b:233})" raised @click="playSound()">
+    <v-card min-height="120px" height="100%" class="d-flex justify-center align-center" :color="iconColor({r: 197, g:202, b:233})" raised @click="playSound()">
        <h3 class="pa-5">
            <span v-if="isNew">
                &#9733;
