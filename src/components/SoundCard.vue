@@ -11,40 +11,33 @@
 
 <script>
 import {Howl} from 'howler'
+import { utilities } from '@/mixins/utilities.js'
 
-    export default {
-        props: {
-            soundClip: {
-                type: String,
-                default:'',
-            },
-            displayText: {
-                type: String,
-                default: '',
-            },
-            isNew: {
-                type: Boolean,
-                default: false,
-            }
+export default {
+    mixins: [utilities],
+    props: {
+        soundClip: {
+            type: String,
+            default:'',
         },
-        methods: {
-            playSound() {
-                let clip = new Howl({
-                    src: [require(`@/assets/audio/${this.soundClip}.mp3`)]
-                })
-                clip.play()
-
-            },
-             iconColor(color) {
-                 if(this.isNew) return `rgb(255, 205, 89)`
-                let b = color.b
-
-                b = Math.floor(Math.random() * ((b + 30) - (b - 30) + 1) + (b - 30))
-
-                return `rgb(${color.r}, ${color.g}, ${b})`
-            }
+        displayText: {
+            type: String,
+            default: '',
         },
-    }
+        isNew: {
+            type: Boolean,
+            default: false,
+        }
+    },
+    methods: {
+        playSound() {
+            let clip = new Howl({
+                src: [require(`@/assets/audio/${this.soundClip}.mp3`)]
+            })
+            clip.play()
+        },
+    },
+}
 </script>
 
 <style lang="scss" scoped>

@@ -122,4 +122,54 @@ export default [
         soundClip: 'dirtyDog',
         new: true,
     },
+    {
+        displayText: `I can't do anything but blame myself.`,
+        soundClip: 'blameMyself',
+        new: true,
+    },
+    {
+        displayText: `Dawng`,
+        soundClip: 'dong',
+        new: true,
+    },
+    {
+        displayText: `Haaaaaaaie`,
+        soundClip: 'haiee',
+        new: true,
+    },
+    {
+        displayText: `He's getting STRONGER.`,
+        soundClip: 'hesGettingStronger',
+        new: true,
+    },
+    {
+        displayText: `Keagan sings Old Town Road`,
+        soundClip: 'horse',
+        new: true,
+    },
+    {
+        displayText: `How you like that, bitch.`,
+        soundClip: 'howYouLikeThatBitch',
+        new: true,
+    },
+    {
+        displayText: `Laughs in falsetto`,
+        soundClip: 'laughsInFalsetto',
+        new: true,
+    },
+    {
+        displayText: `Noodles and oatmeal for my snacks.`,
+        soundClip: 'oatmeal',
+        new: true,
+    },
+    {
+        displayText: `I didn't know you rolled that way but... you know what, that's ya know.`,
+        soundClip: 'rollThatWay',
+        new: true,
+    },
+    {
+        displayText: `Duh, what the fuck?! This guy's doing cartwheels.`,
+        soundClip: 'theFuckCartwheels',
+        new: true,
+    },
 ]
