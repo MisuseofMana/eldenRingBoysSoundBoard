@@ -6,7 +6,8 @@
           <div class="teal--text text--lighten-1">
             <v-row align-center>
               <v-col>
-                <h1>ELDEN BOYS SOUNDBOARD V.0.3.0</h1>
+                <h1>ELDEN BOYS SOUNDBOARD V.0.4.0</h1>
+                <h2>Updated 03/30/2022</h2>
               </v-col>
               <v-col class="text-right">
                 <p>A soundboard dedicated to my fave elden boys.</p>
@@ -22,45 +23,14 @@
           </div>
 
           <v-row class="mb-5">
-            <v-col sm="12" md="6">
-              <v-btn width="100%" class="pa-10" @click="whichIsOpened = 'keeg'" :color="iconColor({ r: 197, g: 202, b: 233 })">
-                <h1>
-                  Keagan
-                </h1>
-              </v-btn>
-            </v-col>
-
-            <v-col sm="12" md="6">
-              <v-btn width="100%" class="pa-10" @click="whichIsOpened = 'jake'" :color="iconColor({ r: 197, g: 202, b: 233 })">
-                <h1>
-                  Jake
-                </h1>
-              </v-btn>
-            </v-col>
-
-            <v-col sm="12" md="6">
-              <v-btn width="100%" class="pa-10" @click="whichIsOpened = 'maug'" :color="iconColor({ r: 197, g: 202, b: 233 })">
-                <h1>
-                  Mauger
-                </h1>
-              </v-btn>
-            </v-col>
-
-            <v-col sm="12" md="6">
-              <v-btn width="100%" class="pa-10" @click="whichIsOpened = 'davy'" :color="iconColor({ r: 197, g: 202, b: 233 })">
-                <h1>
-                  David
-                </h1>
-              </v-btn>
-            </v-col>
-           
-            <v-col sm="12" md="6">
-              <v-btn width="100%" class="pa-10" @click="whichIsOpened = 'shoe'" :color="iconColor({ r: 197, g: 202, b: 233 })">
-                <h1>
-                  Shoe
-                </h1>
-              </v-btn>
-            </v-col>
+            <Button 
+            v-for="item in boys" 
+            :key="item.who"
+            :who="item.who"
+            :whoAbbreviation="item.whoAbbreviation"
+            :whichIsOpened="whichIsOpened"
+            @change-open="changeOpen($event)"
+            />
           </v-row>
 
         </v-card>
@@ -68,30 +38,35 @@
         <v-card class="mb-5 pb-3" color="rgb(30, 42, 54)">
           <v-img height="300px" :src="require(`@/assets/images/${whichIsOpened}.jpg`)"></v-img>
           <div class="pa-5">
-            <SoundBoard
-              :opened="whichIsOpened === 'keeg'"
+            <SoundBoard 
+              v-if="whichIsOpened === 'keeg'"
               title="Keagan's Quips"
               :boardItems="keaganSounds"
+              who="keeg"
             />
             <SoundBoard
-              :opened="whichIsOpened === 'jake'"
+              v-if="whichIsOpened === 'jake'"
               title="Jakes's Japes"
               :boardItems="jakeSounds"
+              who="jake"
             />
             <SoundBoard
-              :opened="whichIsOpened === 'maug'"
+              v-if="whichIsOpened === 'maug'"
               title="Mauger's Remarks"
               :boardItems="maugerSounds"
+              who="mauger"
             />
             <SoundBoard
-              :opened="whichIsOpened === 'davy'"
+              v-if="whichIsOpened === 'davy'"
               title="David's Dirges"
               :boardItems="davySounds"
+              who="davy"
             />
             <SoundBoard
-              :opened="whichIsOpened === 'shoe'"
+              v-if="whichIsOpened === 'shoe'"
               title="Shoe Says"
               :boardItems="shoeSounds"
+              who="shoe"
             />
           </div>
         </v-card>
@@ -113,31 +88,40 @@
 
 <script>
 import SoundBoard from "@/components/SoundBoard";
+import Button from "@/components/Button";
+
 import keaganSounds from "@/soundCards/keaganCards";
 import jakeSounds from "@/soundCards/jakeCards";
 import maugerSounds from "@/soundCards/maugerCards";
 import davySounds from "@/soundCards/davyCards";
 import shoeSounds from "@/soundCards/shoeCards";
-import { utilities } from '@/mixins/utilities.js'
 
 export default {
   name: "App",
-  mixins: [utilities],
   components: {
     SoundBoard,
+    Button,
   },
   data() {
     return {
-      keaganSounds: this.alphabetical(keaganSounds),
-      jakeSounds: this.alphabetical(jakeSounds),
-      maugerSounds: this.alphabetical(maugerSounds),
-      davySounds: this.alphabetical(davySounds),
-      shoeSounds: this.alphabetical(shoeSounds),
+      keaganSounds: this.compileSounds(keaganSounds),
+      jakeSounds: this.compileSounds(jakeSounds),
+      maugerSounds: this.compileSounds(maugerSounds),
+      davySounds: this.compileSounds(davySounds),
+      shoeSounds: this.compileSounds(shoeSounds),
       whichIsOpened: "keeg",
+      soundCountData:[],
+      boys: [
+        {who: 'Keagan', whoAbbreviation: 'keeg'},
+        {who: 'Jake', whoAbbreviation: 'jake'},
+        {who: 'Mauger', whoAbbreviation: 'maug'},
+        {who: 'David', whoAbbreviation: 'davy'},
+        {who: 'Shoe', whoAbbreviation: 'shoe'},
+      ]
     };
   },
   methods: {
-    alphabetical(array) {
+    compileSounds(array) {
       if (array.length <= 1) return array;
       return array.sort(function (a, b) {
         let titleA = a.displayText.toUpperCase();
@@ -145,8 +129,11 @@ export default {
         return titleA < titleB ? -1 : titleA > titleB ? 1 : 0;
       });
     },
+    changeOpen(e){
+      this.whichIsOpened = e
+    }
   },
-};
+}
 </script>
 
 <style lang="scss">
