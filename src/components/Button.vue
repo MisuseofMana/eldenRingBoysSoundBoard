@@ -1,10 +1,10 @@
 <template>
     <v-col sm="12" md="6">
-        <v-btn width="100%" class="pa-10" @click="$emit('change-open', whoAbbreviation)" :color="iconColor({ r: 197, g: 202, b: 233 })">
-        <h1>
-            {{ who }}
-        </h1>
-        </v-btn>
+        <v-card width="100%" class="pa-5 d-flex justify-center align-center" :color="iconColor({ r: 197, g: 202, b: 233 })">
+            <p class="text-center">
+                {{ who }}
+            </p>
+        </v-card>
     </v-col>
 </template>
 
@@ -18,14 +18,12 @@ import { utilities } from '@/mixins/utilities.js'
                 type: String,
                 default: ''
             },
-            whoAbbreviation: {
-                type: String,
-                default: ''
-            }
         }
     }
 </script>
 
 <style lang="scss" scoped>
-
+p {
+    margin:0;
+}
 </style>

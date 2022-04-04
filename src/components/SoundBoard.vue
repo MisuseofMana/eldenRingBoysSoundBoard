@@ -3,14 +3,14 @@
         <div :key="who" class="mb-10">
             <h2 class="text-left teal--text mb-5">{{ title }}</h2>
             <v-row v-if="boardItems">
-                <v-col cols="6" xs="6" sm="6" md="4" lg="2" v-for="(item, index) in boardItems" :key="index+item.soundClip">
+                <v-col cols="6" xs="6" sm="6" md="4" lg="2" v-for="(item, index) in withCountBoardItems" :key="index+item.soundClip">
                     <SoundCard
                     :displayText="item.displayText"
                     :soundClip="item.soundClip"
                     :audio="item.audio"
                     :isNew="item.new"
                     :who="who"
-                    :counter="getCounter(item.soundClip)"
+                    :counter="item.count"
                     class="mb-3 text-center"
                     />
                 </v-col>
@@ -23,9 +23,12 @@
 import SoundCard from '@/components/SoundCard'
 
 import { db } from '@/plugins/firebaseDb.js'
-import { getDocs, collection } from "firebase/firestore"
+import { collection, query, where, getDocs } from "firebase/firestore";
 
 export default {
+    components: {
+        SoundCard
+    },
     props: {
         title: {
             type: String,
@@ -49,29 +52,32 @@ export default {
         }
     },
     data() {
-        return{
-            counters: {}
+        return {
+            boardItemCounts: []
         }
     },
-    created() {
+    mounted() {
         this.getSoundData()
     },
-    methods: {
-    async getSoundData() {
-      const query = await getDocs(collection(db, this.who))
-      
-      query.forEach((item) => {
-            console.log(item)
-          this.boardItems[item.id].count = item.data().count
-      })
-    },
-        getCounter(clip) {
-            return this.counters[clip]
+    computed: {
+        withCountBoardItems() {
+            return [...this.boardItemCounts, ...this.boardItems ]
         }
     },
-    components: {
-        SoundCard
-    }
+    methods: {
+        async getSoundData() {
+            const countQuery = query(collection(db, this.who), where("count", ">", 0));
+            const querySnapshot = await getDocs(countQuery);
+            
+            querySnapshot.forEach((doc) => {   
+                const id = doc.id
+                const countObj = doc.data()         
+                this.boardItemCounts.push({[id]: countObj})
+                console.log({[id]: countObj})
+            })
+            console.log(this.withCountBoardItems)
+        },
+    },
 }
 </script>
 

@@ -17,39 +17,37 @@
           </div>
         </v-card>
 
-        <v-card class="interior mb-7 align-center pb-3" color="rgb(30, 42, 54)">
-           <div class="mb-3 teal--text text--lighten-1">
-            <h2>Choose Your Elden Boy</h2>
-          </div>
+        <v-card class="interior mb-5 align-center pb-5" color="rgb(30, 42, 54)">
+          <v-row no-gutters>
+            <v-col>
 
-          <v-row class="mb-5">
-            <Button 
-            v-for="item in boys" 
-            :key="item.who"
-            :who="item.who"
-            :whoAbbreviation="item.whoAbbreviation"
-            :whichIsOpened="whichIsOpened"
-            @change-open="changeOpen($event)"
-            />
+            <router-link
+              to="/"
+            >
+              <Button 
+                who="Home"
+              />
+            </router-link>
+            </v-col>
+
+            <v-col
+              v-for="item in boys" 
+              :key="item.who"
+            >
+              <router-link
+                :to="item.link"
+              >
+                <Button 
+                  :who="item.who"
+                />
+              </router-link>
+            </v-col>
           </v-row>
-
         </v-card>
 
         <v-card class="mb-5 pb-3" color="rgb(30, 42, 54)">
-          <v-img height="300px" :src="require(`@/assets/images/${whichIsOpened}.jpg`)"></v-img>
-          <div class="pa-5">
-            <SoundBoard 
-              v-if="whichIsOpened === 'keeg'"
-              title="Keagan's Quips"
-              :boardItems="keaganSounds"
-              who="keeg"
-            />
-            <SoundBoard
-              v-if="whichIsOpened === 'jake'"
-              title="Jakes's Japes"
-              :boardItems="jakeSounds"
-              who="jake"
-            />
+            <router-view></router-view>
+          <!-- 
             <SoundBoard
               v-if="whichIsOpened === 'maug'"
               title="Mauger's Remarks"
@@ -67,8 +65,7 @@
               title="Shoe Says"
               :boardItems="shoeSounds"
               who="shoe"
-            />
-          </div>
+            /> -->
         </v-card>
 
         <v-card
@@ -87,10 +84,7 @@
 </template>
 
 <script>
-import SoundBoard from "@/components/SoundBoard";
 import Button from "@/components/Button";
-
-import keaganSounds from "@/soundCards/keaganCards";
 import jakeSounds from "@/soundCards/jakeCards";
 import maugerSounds from "@/soundCards/maugerCards";
 import davySounds from "@/soundCards/davyCards";
@@ -99,12 +93,11 @@ import shoeSounds from "@/soundCards/shoeCards";
 export default {
   name: "App",
   components: {
-    SoundBoard,
     Button,
   },
   data() {
     return {
-      keaganSounds: this.compileSounds(keaganSounds),
+      
       jakeSounds: this.compileSounds(jakeSounds),
       maugerSounds: this.compileSounds(maugerSounds),
       davySounds: this.compileSounds(davySounds),
@@ -112,23 +105,16 @@ export default {
       whichIsOpened: "keeg",
       soundCountData:[],
       boys: [
-        {who: 'Keagan', whoAbbreviation: 'keeg'},
-        {who: 'Jake', whoAbbreviation: 'jake'},
-        {who: 'Mauger', whoAbbreviation: 'maug'},
-        {who: 'David', whoAbbreviation: 'davy'},
-        {who: 'Shoe', whoAbbreviation: 'shoe'},
+        {who: 'Keagan', whoAbbreviation: 'keeg', link: '/keagan'},
+        {who: 'Jake', whoAbbreviation: 'jake', link: '/jake'},
+        {who: 'Mauger', whoAbbreviation: 'maug', link: '/mauger'},
+        {who: 'David', whoAbbreviation: 'davy', link: '/david'},
+        {who: 'Shoe', whoAbbreviation: 'shoe', link: '/sean'},
       ]
     };
   },
   methods: {
-    compileSounds(array) {
-      if (array.length <= 1) return array;
-      return array.sort(function (a, b) {
-        let titleA = a.displayText.toUpperCase();
-        let titleB = b.displayText.toUpperCase();
-        return titleA < titleB ? -1 : titleA > titleB ? 1 : 0;
-      });
-    },
+    
     changeOpen(e){
       this.whichIsOpened = e
     }
