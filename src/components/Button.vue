@@ -1,7 +1,7 @@
 <template>
     <v-col sm="12" md="6">
-        <v-card width="100%" class="pa-5 d-flex justify-center align-center" :color="iconColor({ r: 197, g: 202, b: 233 })">
-            <p class="text-center">
+        <v-card min-height="100%" class="pa-5" :color="iconColor({ r: 197, g: 202, b: 233 })">
+            <p class="text-center ma-0">
                 {{ who }}
             </p>
         </v-card>

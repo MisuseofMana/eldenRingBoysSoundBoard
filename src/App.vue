@@ -17,55 +17,55 @@
           </div>
         </v-card>
 
-        <v-card class="interior mb-5 align-center pb-5" color="rgb(30, 42, 54)">
-          <v-row no-gutters>
-            <v-col>
-
+        <v-tabs color="rgb(30, 42, 54)" background-color="rgb(30, 42, 54)" slider-color="rgb(30, 100, 90)" align-with-title>
+          <v-tab>
             <router-link
               to="/"
+              class="text-decoration-none"
             >
-              <Button 
-                who="Home"
-              />
+              Home
             </router-link>
-            </v-col>
+          </v-tab>
 
-            <v-col
-              v-for="item in boys" 
-              :key="item.who"
+          <v-tab>
+            <router-link
+              to="/keagan"
+              class="text-decoration-none"
             >
-              <router-link
-                :to="item.link"
-              >
-                <Button 
-                  :who="item.who"
-                />
-              </router-link>
-            </v-col>
-          </v-row>
-        </v-card>
+              Keeg's Quips
+            </router-link>
+          </v-tab>
+
+          <v-tab>
+            <router-link
+              to="/jake"
+              class="text-decoration-none"
+            >
+              Jake's Japes
+            </router-link>
+          </v-tab>
+
+          <v-tab>
+            <router-link
+              to="/david"
+              class="text-decoration-none"
+            >
+              Davy's Dirges
+            </router-link>
+          </v-tab>
+
+          <v-tab>
+            <router-link
+              to="/sean"
+              class="text-decoration-none"
+            >
+              Shoe Says
+            </router-link>
+          </v-tab>
+        </v-tabs>
 
         <v-card class="mb-5 pb-3" color="rgb(30, 42, 54)">
-            <router-view></router-view>
-          <!-- 
-            <SoundBoard
-              v-if="whichIsOpened === 'maug'"
-              title="Mauger's Remarks"
-              :boardItems="maugerSounds"
-              who="mauger"
-            />
-            <SoundBoard
-              v-if="whichIsOpened === 'davy'"
-              title="David's Dirges"
-              :boardItems="davySounds"
-              who="davy"
-            />
-            <SoundBoard
-              v-if="whichIsOpened === 'shoe'"
-              title="Shoe Says"
-              :boardItems="shoeSounds"
-              who="shoe"
-            /> -->
+          <router-view></router-view>
         </v-card>
 
         <v-card
@@ -84,7 +84,6 @@
 </template>
 
 <script>
-import Button from "@/components/Button";
 import jakeSounds from "@/soundCards/jakeCards";
 import maugerSounds from "@/soundCards/maugerCards";
 import davySounds from "@/soundCards/davyCards";
@@ -92,9 +91,6 @@ import shoeSounds from "@/soundCards/shoeCards";
 
 export default {
   name: "App",
-  components: {
-    Button,
-  },
   data() {
     return {
       
