@@ -17,50 +17,29 @@
           </div>
         </v-card>
 
-        <v-tabs color="rgb(30, 42, 54)" background-color="rgb(30, 42, 54)" slider-color="rgb(30, 100, 90)" align-with-title>
-          <v-tab>
-            <router-link
-              to="/"
-              class="text-decoration-none"
-            >
+        <v-tabs grow color="rgb(30, 42, 54)" background-color="rgb(30, 42, 54)" slider-color="rgb(30, 100, 90)">
+          <v-tab to="/">
               Home
-            </router-link>
           </v-tab>
 
-          <v-tab>
-            <router-link
-              to="/keagan"
-              class="text-decoration-none"
-            >
+          <v-tab to="/keagan">
               Keeg's Quips
-            </router-link>
           </v-tab>
 
-          <v-tab>
-            <router-link
-              to="/jake"
-              class="text-decoration-none"
-            >
+          <v-tab to="/jake">
               Jake's Japes
-            </router-link>
           </v-tab>
 
-          <v-tab>
-            <router-link
-              to="/david"
-              class="text-decoration-none"
-            >
+          <v-tab to="/mauger">
+              Mauger's Mean-ones
+          </v-tab>
+
+          <v-tab to="/david">
               Davy's Dirges
-            </router-link>
           </v-tab>
 
-          <v-tab>
-            <router-link
-              to="/sean"
-              class="text-decoration-none"
-            >
+          <v-tab to="/sean">
               Shoe Says
-            </router-link>
           </v-tab>
         </v-tabs>
 

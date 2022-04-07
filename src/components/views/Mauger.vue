@@ -1,9 +1,28 @@
 <template>
-    <div>
-
+    <div class="pa-5">
+        <v-img height="300px" class="mb-5" :src="require(`@/assets/images/maug.jpg`)"></v-img>
+        <SoundBoard 
+            title="Mauger's Mean-ones"
+            :boardItems="maugerSounds"
+            who="jake"
+        />
     </div>
 </template>
 
-<style lang="scss" scoped>
+<script>
+import maugerSounds from "@/soundCards/maugerCards";
+import SoundBoard from "@/components/SoundBoard";
+import { utilities } from '@/mixins/utilities.js'
 
-</style>
+export default {
+    components: {
+        SoundBoard,
+    },
+    mixins: [utilities],
+    data() {
+        return {
+            maugerSounds: this.compileSounds(maugerSounds),
+        }
+    }
+}
+</script>

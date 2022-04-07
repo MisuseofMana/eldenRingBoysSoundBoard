@@ -3,7 +3,7 @@
         <div :key="who" class="mb-10">
             <h2 class="text-left teal--text mb-5">{{ title }}</h2>
             <v-row v-if="boardItems">
-                <v-col cols="6" xs="6" sm="6" md="4" lg="2" v-for="(item, index) in withCountBoardItems" :key="index+item.soundClip">
+                <v-col cols="6" xs="6" sm="6" md="4" lg="2" v-for="(item) in withCountBoardItems" :key="item.soundClip">
                     <SoundCard
                     :displayText="item.displayText"
                     :soundClip="item.soundClip"
