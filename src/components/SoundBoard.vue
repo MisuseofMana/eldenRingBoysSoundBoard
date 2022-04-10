@@ -61,7 +61,22 @@ export default {
     },
     computed: {
         withCountBoardItems() {
-            return [...this.boardItemCounts, ...this.boardItems ]
+            let mergedArray = []
+
+
+
+            this.boardItems.forEach(item => {
+                console.log(item)
+                let matchSound = this.boardItemCounts.find(sound => sound.soundClip === item.soundClip)
+                if(matchSound) {
+                    mergedArray.push({...item, ...matchSound})
+                }
+                else {
+                    mergedArray.push({...item})
+                }
+            })
+
+            return mergedArray
         }
     },
     methods: {
@@ -69,13 +84,10 @@ export default {
             const countQuery = query(collection(db, this.who), where("count", ">", 0));
             const querySnapshot = await getDocs(countQuery);
             
-            querySnapshot.forEach((doc) => {   
-                const id = doc.id
-                const countObj = doc.data()         
-                this.boardItemCounts.push({[id]: countObj})
-                console.log({[id]: countObj})
+            querySnapshot.forEach((doc) => {
+                this.boardItemCounts[doc.id] = 
+                    { soundClip: doc.id, count: doc.data().count }
             })
-            console.log(this.withCountBoardItems)
         },
     },
 }

@@ -2,97 +2,28 @@
   <div id="app">
     <v-app>
       <v-container>
-        <v-card class="interior mb-7 align-center" color="rgb(30, 42, 54)">
-          <div class="teal--text text--lighten-1">
-            <v-row align-center>
-              <v-col>
-                <h1>ELDEN BOYS SOUNDBOARD V.0.4.0</h1>
-                <h2>Updated 03/30/2022</h2>
-              </v-col>
-              <v-col class="text-right">
-                <p>A soundboard dedicated to my fave elden boys.</p>
-                <p>Now with alphabetized sounds!</p>
-              </v-col>
-            </v-row>
-          </div>
-        </v-card>
-
-        <v-tabs grow color="rgb(30, 42, 54)" background-color="rgb(30, 42, 54)" slider-color="rgb(30, 100, 90)">
-          <v-tab to="/">
-              Home
-          </v-tab>
-
-          <v-tab to="/keagan">
-              Keeg's Quips
-          </v-tab>
-
-          <v-tab to="/jake">
-              Jake's Japes
-          </v-tab>
-
-          <v-tab to="/mauger">
-              Mauger's Mean-ones
-          </v-tab>
-
-          <v-tab to="/david">
-              Davy's Dirges
-          </v-tab>
-
-          <v-tab to="/sean">
-              Shoe Says
-          </v-tab>
-        </v-tabs>
-
+        <Header/>
+        <Navigation/>
         <v-card class="mb-5 pb-3" color="rgb(30, 42, 54)">
           <router-view></router-view>
         </v-card>
-
-        <v-card
-          class="interior text-right pb-1 blue-grey--text text--lighten-1"
-          color="rgb(30, 42, 54)"
-        >
-          <p>
-            Made by
-            <a href="https://www.seanyager.com" target="_blank">Sean Yager</a>
-            for nefarious reasons.
-          </p>
-        </v-card>
+        <Footer/>
       </v-container>
     </v-app>
   </div>
 </template>
 
 <script>
-import jakeSounds from "@/soundCards/jakeCards";
-import maugerSounds from "@/soundCards/maugerCards";
-import davySounds from "@/soundCards/davyCards";
-import shoeSounds from "@/soundCards/shoeCards";
+import Header from '@/components/Header'
+import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
 
 export default {
   name: "App",
-  data() {
-    return {
-      
-      jakeSounds: this.compileSounds(jakeSounds),
-      maugerSounds: this.compileSounds(maugerSounds),
-      davySounds: this.compileSounds(davySounds),
-      shoeSounds: this.compileSounds(shoeSounds),
-      whichIsOpened: "keeg",
-      soundCountData:[],
-      boys: [
-        {who: 'Keagan', whoAbbreviation: 'keeg', link: '/keagan'},
-        {who: 'Jake', whoAbbreviation: 'jake', link: '/jake'},
-        {who: 'Mauger', whoAbbreviation: 'maug', link: '/mauger'},
-        {who: 'David', whoAbbreviation: 'davy', link: '/david'},
-        {who: 'Shoe', whoAbbreviation: 'shoe', link: '/sean'},
-      ]
-    };
-  },
-  methods: {
-    
-    changeOpen(e){
-      this.whichIsOpened = e
-    }
+  components: {
+    Header,
+    Navigation,
+    Footer
   },
 }
 </script>
