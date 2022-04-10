@@ -3,7 +3,7 @@
           <div class="teal--text text--lighten-1">
             <v-row align-center>
               <v-col>
-                <h1>ELDEN BOYS SOUNDBOARD V.0.4.0</h1>
+                <h1>ELDEN BOYS SOUNDBOARD V.0.5.0</h1>
                 <h2>Updated 03/30/2022</h2>
               </v-col>
               <v-col class="text-right">

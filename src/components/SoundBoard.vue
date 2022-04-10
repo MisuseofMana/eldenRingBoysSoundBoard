@@ -3,7 +3,7 @@
         <div :key="who" class="mb-10">
             <h2 class="text-left teal--text mb-5">{{ title }}</h2>
             <v-row v-if="boardItems">
-                <v-col cols="6" xs="6" sm="6" md="4" lg="2" v-for="(item) in withCountBoardItems" :key="item.soundClip">
+                <v-col cols="6" xs="6" sm="6" md="4" lg="2" v-for="(item) in completeBoardItems" :key="item.soundClip">
                     <SoundCard
                     :displayText="item.displayText"
                     :soundClip="item.soundClip"
@@ -53,31 +53,23 @@ export default {
     },
     data() {
         return {
-            boardItemCounts: []
+            boardItemCounts: {},
+            mappedBoardItems: {},
+            completeBoardItems: []
         }
     },
-    mounted() {
+    created() {
         this.getSoundData()
     },
     computed: {
-        withCountBoardItems() {
-            let mergedArray = []
-
-
-
-            this.boardItems.forEach(item => {
-                console.log(item)
-                let matchSound = this.boardItemCounts.find(sound => sound.soundClip === item.soundClip)
-                if(matchSound) {
-                    mergedArray.push({...item, ...matchSound})
-                }
-                else {
-                    mergedArray.push({...item})
-                }
+        namedBoardItems() {
+            let tempObj = {}
+            this.boardItems.forEach((boardItem) => {
+                tempObj[boardItem.soundClip] = 
+                { soundClip: boardItem.soundClip, displayText: boardItem.displayText}
             })
-
-            return mergedArray
-        }
+            return tempObj
+        },
     },
     methods: {
         async getSoundData() {
@@ -88,6 +80,29 @@ export default {
                 this.boardItemCounts[doc.id] = 
                     { soundClip: doc.id, count: doc.data().count }
             })
+            
+            this.boardItems.forEach((item) => {
+                const name = item.soundClip
+
+                this.mappedBoardItems[name] = {
+                    soundClip: name,
+                    new: item.new || false,
+                    displayText: item.displayText || 'missing',
+                    count: 0,
+                }
+            })
+
+            for(let item in this.boardItemCounts) {
+                const target = this.boardItemCounts[item]
+                const recipient = this.mappedBoardItems[item]
+                target.count ? 
+                recipient.count = target.count || 0
+                : recipient.count = 0
+            }
+
+            for(let item in this.mappedBoardItems) {
+                this.completeBoardItems.push(this.mappedBoardItems[item])
+            }
         },
     },
 }

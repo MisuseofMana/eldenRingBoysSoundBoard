@@ -4,7 +4,7 @@
         <SoundBoard 
             title="Shoe Says"
             :boardItems="shoeSounds"
-            who="jake"
+            who="shoe"
         />
     </div>
 </template>

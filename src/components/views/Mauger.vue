@@ -4,7 +4,7 @@
         <SoundBoard 
             title="Mauger's Mean-ones"
             :boardItems="maugerSounds"
-            who="jake"
+            who="maug"
         />
     </div>
 </template>

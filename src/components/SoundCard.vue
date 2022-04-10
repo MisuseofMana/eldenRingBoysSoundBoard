@@ -1,6 +1,6 @@
 <template>
 <div>
-    <v-card min-height="120px" height="100%" class="d-flex justify-center align-center flex-column pa-2" :color="iconColor({r: 197, g:202, b:233})" raised @click="playSound()">
+    <v-card min-height="120px" height="100%" class="d-flex justify-center align-center flex-column pa-2" :color="iconColor({r: 197, g:202, b:235}, counter, isNew)" raised @click="playSound()">
        <h3>
            <span v-if="isNew">
                &#9733;
@@ -72,5 +72,9 @@ export default {
 <style lang="scss" scoped>
 p {
     font-size:.7rem;
+}
+
+.glow {
+    filter: drop-shadow(0px 0px 4px #ffe281) !important;
 }
 </style>

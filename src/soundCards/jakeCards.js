@@ -9,7 +9,11 @@ export default [
     },
     {
         displayText: `It helps bring the wife into it.`,
-        soundClip: 'jakeWifeIntoIt',
+        soundClip: 'jakeWifeIntoIt'
+    },
+    {
+        displayText: `You freaking butthole.`,
+        soundClip: 'jakeButthole',
         new: true,
     },
 ]
